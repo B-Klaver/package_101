@@ -1,0 +1,35 @@
+.column {
+  float: left;
+  width: 50%;
+}
+
+.clear {
+  clear: both;
+}
+
+code.r{
+  font-size: 14px;
+}
+
+
+.title-slide {
+  background-image: url(C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/ppt_title.png);
+  background-size: 100% 100%
+}
+
+.title-slide h1 {
+  color: black;
+  text-shadow: none;
+}
+
+.title-slide h2 {
+  color: black;
+  text-shadow: none;
+}
+
+.title-slide h3 {
+  color: black;
+  text-shadow: none;
+}
+
+

@@ -1,0 +1,488 @@
+---
+title: "Package Development:"
+subtitle: "ECweather"
+date: "November 9, 2023"
+output: 
+  xaringan::moon_reader:
+    self_contained:   true
+    css: ['default', 'styles.css']
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+      navigation:
+        scroll: false
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+
+sapply(c('devtools'), 
+       require, 
+       character.only = TRUE)
+
+#https://kbroman.org/pkg_primer/pages/github.html
+#https://www.r-bloggers.com/2022/09/the-package-learning-how-to-build-an-r-package/
+#https://bookdown.org/rdpeng/RProgDA/the-devtools-package.html
+#https://web.mit.edu/insong/www/pdf/rpackage_instructions.pdf
+
+
+```
+
+### Why create a package?
+
+- Packages are a natural extension of functions
+- When you have many interrelated functions it can be useful to combine them into one location (ie. a package)
+- They make it much easier to distribute your code to others
+- They provide a clean uniform experience for others
+- They are well documented, provide examples, and are tested to be robust
+
+---
+
+# Getting Started: Libraries
+
+---
+
+### Getting Started: Libraries
+#### Installing 'Rtools'
+
+- Rtools is required to develop packages in R
+- Make sure you install the correct Rtools for your R version (<https://cran.r-project.org/bin/windows/Rtools/>)
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('rtools')
+library('rtools')
+
+```
+
+#### Installing 'devtools'
+
+- devtools contains many useful and necessary functions to properly and easily setup the framework for a package
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('devtools')
+library('devtools')
+
+```
+
+---
+
+# Getting Started: Create a package
+
+---
+
+### Getting Started: Create a package
+Step 1: create a new project
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_project.png", dpi = 175)
+
+```
+
+---
+
+### Getting Started: Create a package
+Step 2: start a new directory
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_directory.png", dpi = 175)
+
+```
+
+---
+
+### Getting Started: Create a package
+Step 3: select 'R Package'
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/create_package.png", dpi = 175)
+
+```
+
+---
+
+### Getting Started: Create a package
+Step 4: name your package and setup a git repository to track changes
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/package_name.png", dpi = 175)
+
+```
+
+---
+
+# Getting Started: Package Structure
+
+---
+
+### Getting Started: Package Structure
+
+- Key folders:
+  - R
+  - man
+  - vignettes
+  - tests
+- Key files:
+  - NAMESPACE
+  - README
+  - DESCRIPTION
+  - LICENSE
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/folders.png", dpi = 175)
+
+```
+
+---
+
+# Getting Started: Package elements
+
+---
+
+### Getting Started: Package elements
+#### The 'DESCRIPTION' file
+
+- Describes important elements in a package
+  - Package name
+  - Author
+  - Version
+  - Dependencies
+  - Description of the package
+  - License information
+  - Package imports/suggestions
+
+---
+
+### Getting Started: Package elements
+#### The 'README' file
+
+- Provides GitHub users an overview of the package
+  - How to install
+  - Description/purpose
+  - Examples
+- There are two types of README files
+  - README.Rmd, which allows R chunks (it is an Rmd after all!)
+  - README.md, which is just a basic README
+- It is recommended to build your README as an Rmd, which will be rendered as an md file that appears nicely in GitHub
+
+---
+
+### Getting Started: Package elements
+#### 'NAMESPACE'
+
+- Updated/created automatically using roxygen2
+  - Ensures the package is self contained
+  - Exports and imports required packages
+
+---
+
+### Getting Started: Package elements
+#### 'LICENSE'
+
+- The license associated with the package
+  - This holds the copyright information for the package
+
+---
+
+### Getting Started: Package elements
+#### 'R' folder
+
+- Where all of the code lives for the package
+- Automatically created when a package is created
+
+---
+
+### Getting Started: Package elements
+#### 'man' folder
+
+- Documentation that will fill the help page for your package
+- Created automatically using Roxygen2 based on the params included in each script
+
+---
+
+### Getting Started: Package elements
+#### 'vignettes' folder
+
+- When users have installed the package through CRAN or need to create a build-specific tutorial
+- Provide detailed tutorials
+- Provide examples/reasons for common errors or warnings in the package
+- Can provide information on new features
+- Multiple vignettes can be provided per package
+
+---
+
+### Getting Started: Package elements
+#### 'tests' folder
+
+- Setup tests to ensure your package is working as intended
+- Test if the proper errors, warnings, or messages appear when certain conditions are met
+
+---
+
+### Getting Started: Package elements
+#### 'data' folder
+
+- A place to include datasets that you want to be accessible through your package
+
+---
+
+# Package Development
+
+---
+
+### Package Development:
+#### 'DESCRIPTION'
+
+- This file is automatically generated when you create a package
+- You will need to fill it out manually, though certain elements can be automatically filled
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/description.png", dpi = 175)
+
+```
+
+---
+
+### Package Development:
+#### 'README'
+
+- Create a README.Rmd and manually fill it out
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_readme_rmd()
+
+```
+- Update the README.md file by knitting this file or running
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::build_readme()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/readme.png", dpi = 175)
+
+```
+
+---
+
+### Package Development:
+#### 'NAMESPACE'
+
+- This is an automatically updated file
+- Update it by doing
+``` {r, echo=TRUE, eval=FALSE}
+
+document()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/namespace.png", dpi = 175)
+
+```
+
+---
+
+### Package Development:
+#### 'LICENSE'
+
+- Copyright your work by calling one of these
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_mit_license()
+usethis::use_gpl3_license()
+usethis::use_proprietary_license()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/license.png", dpi = 175)
+
+```
+
+
+---
+
+### Package Development:
+#### R Scripts
+
+- Create your R scripts as you normally would
+- These will be singular functions
+- Set up your @params at the top of the script to fill out your function manual
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/params.png", dpi = 175)
+
+```
+
+---
+
+### Package Development:
+#### Manuals
+
+- Found in the 'man' folder
+- These are generated automatically based on the @params found at the top of your R scripts
+- Update your manuals by doing
+``` {r, echo=TRUE, eval=FALSE}
+
+document()
+
+```
+
+---
+
+### Package Development:
+#### Vignettes
+
+- Create a vignette by calling (note this also creates the vignette folder)
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_vignette('vignette_name')
+
+```
+- Try calling your vignettes by the names of the functions they relate to
+- Fill it out manually now that it has been created
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/vignette.png", dpi = 175)
+
+```
+
+---
+
+### Package Development:
+#### Tests
+
+- Now that your functions are ready and documented, it's time to setup some tests
+- First you need to setup a test infrastructure
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_testthat()
+
+```
+- Next create a test file
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_test()
+
+```
+- Create your tests using the package 'testthat'
+  - test for warnings, errors, and warnings
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test_that()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/test.png", dpi = 175)
+
+```
+- Run the tests using
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test()
+
+```
+
+---
+
+### Package Development:
+#### Data
+
+- Create a data folder
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_data()
+
+```
+- To make datasets accessible through your package simply save your data to the data folder
+- Make sure these files are saved as '.rda' files
+
+---
+
+### Package Wrap Up:
+
+#### Test your package
+- Use this code to run your preset tests
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test()
+
+```
+#### Check your package
+- Run checks on the package
+  - This will return any potential problems, missing elements, or errors with the entire package
+``` {r, echo=TRUE, eval=FALSE}
+
+check()
+
+```
+#### Build your package
+- Once your tests and checks are complete you can finally build your package
+``` {r, echo=TRUE, eval=FALSE}
+
+build()
+
+```
+
+--- 
+
+### Install your package locally
+
+- This is an important step, you will want to make sure it installs and runs normally now that it has been transformed into a zip file
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages("path/package_name.tar.gz")
+
+```
+
+---
+
+### Upload your package to GitHub
+
+- Allows you to track changes in your code
+- Others can easily review, provide input and collaborate with your package and code
+- People can easily install your package directly from GitHub using 'install_github()'
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('devtools')
+library('devtools')
+
+```
+
+---
+
+### Updating and working with your package
+
+- Now that your package is created and you've realized you have bugs the first step is to load your project back up
+- Load your 'devtools' package
+- Now run this to load all of the functions in your package
+``` {r, echo=TRUE, eval=FALSE}
+
+load_all()
+
+```
+- Okay so you've made some changes and everything appears to be fixed
+  - Update the package version found in the DESCRIPTION file
+  - Commit your changes and push to git
+- Remember all of the same git features exist here, if you are doing testing feel free to leverage branches in git and merge together later with main once you are finished
+  
