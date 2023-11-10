@@ -1,0 +1,1066 @@
+---
+title: "Package Development"
+date: "November 9, 2023"
+output: 
+  xaringan::moon_reader:
+    self_contained:   true
+    css: ['default', 'styles.css']
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+      navigation:
+        scroll: false
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+
+sapply(c('devtools'), 
+       require, 
+       character.only = TRUE)
+
+#https://kbroman.org/pkg_primer/pages/github.html
+#https://www.r-bloggers.com/2022/09/the-package-learning-how-to-build-an-r-package/
+#https://bookdown.org/rdpeng/RProgDA/the-devtools-package.html
+#https://web.mit.edu/insong/www/pdf/rpackage_instructions.pdf
+#https://r-pkgs.org/description.html
+
+```
+
+### Why create a package?
+
+- Packages are a natural extension of functions   
+
+- When you have many interrelated functions it can be useful to combine them into one location (ie. a package)   
+
+- They make it much easier to distribute your code to others   
+
+- They provide a clean uniform experience for others   
+
+- They are well documented, provide examples, and are tested to be robust   
+
+.center2[
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/r_pic.png", dpi = 175)
+
+```
+]
+
+---
+
+# Package Development
+
+<black>Libraries</black>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+
+---
+
+### Package Development: Libraries
+
+Installing 'Rtools'
+
+- 'Rtools' is required to develop packages in R
+
+- Make sure you install the correct Rtools for your R version (<https://cran.r-project.org/bin/windows/Rtools/>)
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('rtools')
+library('rtools')
+
+```
+
+<div class="gray2">Installing 'devtools'</div>
+
+
+
+---
+
+### Package Development: Libraries
+
+<div class="gray2">Installing 'Rtools'</div>
+
+Installing 'devtools'
+
+- 'devtools' contains many useful and necessary functions to properly and easily setup the framework for a package
+
+  - 'devtools' includes other necessary packages such as: 'usethis', 'testthat', and 'roxygen2'
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('devtools')
+library('devtools')
+
+```
+
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<black>Creating a Package</black>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+
+---
+
+### Package Development: Creating a Package
+1) Create a new project
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_project.png", dpi = 200)
+
+```
+
+<gray2>2) Start a new directory</gray2>
+<br>
+<br>
+<gray2>3) Select 'R Package'</gray2>
+<br>
+<br>
+<gray2>4) Name your package and setup a git repository to track changes</gray2>
+
+
+---
+
+### Package Development: Creating a Package
+
+<gray2>1) Create a new project</gray2>
+
+2) Start a new directory
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_directory.png", dpi = 200)
+
+```
+
+<gray2>3) Select 'R Package'</gray2>
+<br>
+<br>
+<gray2>4) Name your package and setup a git repository to track changes</gray2>
+
+
+---
+
+### Package Development: Creating a Package
+
+<gray2>1) Create a new project</gray2>
+<br>
+<br>
+<gray2>2) Start a new directory</gray2>
+
+3) Select 'R Package'
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/create_package.png", dpi = 200)
+
+```
+
+<gray2>4) Name your package and setup a git repository to track changes</gray2>
+
+---
+
+### Package Development: Creating a Package
+
+<gray2>1) Create a new project</gray2>
+<br>
+<br>
+<gray2>2) Start a new directory</gray2>
+<br>
+<br>
+<gray2>3) Select 'R Package'</gray2>
+
+4) Name your package and setup a git repository to track changes
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/package_name.png", dpi = 200)
+
+```
+
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<black>Structure</black>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+
+---
+
+### Package Development: Structure
+
+.img-right[
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/folders.png", dpi = 175)
+
+```
+]
+
+.unwrap[
+- Key folders:
+  - R
+  - man
+  - vignettes
+  - tests
+   
+- Key files:
+  - NAMESPACE
+  - README
+  - DESCRIPTION
+  - LICENSE
+]
+
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<black>Elements</black>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+
+---
+
+### Package Development: Elements
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: gray out the other lines
+
+```
+<black2>1) 'DESCRIPTION' file</black2>
+
+- Describes important elements in a package
+  - Package name and author
+  - Version
+  - Description of the package
+  - License information
+  - Package imports/suggestions
+  
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2> 
+<br>  
+<br>
+<gray2>4) 'LICENSE' file</gray2>   
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) 'man' folder</gray2>    
+<br> 
+<br>
+<gray2>7) 'vignettes' folder</gray2>   
+<br>
+<br>
+<gray2>8) 'tests' folder</gray2>   
+<br>
+<br>
+<gray2>9) 'data' folder</gray2>   
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<br>
+<br>
+<black2>2) 'README' file
+.sub_bullet[
+- Provides GitHub users an overview of the package
+  - Description, purpose, and examples
+- There are two types of README files
+  - README.Rmd, which allows R chunks (it is an Rmd after all!)
+  - README.md, which is just a basic README
+- It is recommended to build your README as an Rmd, which will be rendered as an md file that appears nicely in GitHub   
+]
+</black2>   
+<gray2>3) 'NAMESPACE' file</gray2>
+<br>
+<br>
+<gray2>4) 'LICENSE' file</gray2>
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) 'man' folder</gray2>   
+<br>
+<br>
+<gray2>7) 'vignettes' folder</gray2>   
+<br>
+<br>
+<gray2>8) 'tests' folder</gray2>  
+<br>
+<br>
+<gray2>9) 'data' folder</gray2>  
+
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>  
+<br> 
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<black2>3) 'NAMESPACE' file</black2>   
+.sub_bullet[
+- Updated/created automatically using roxygen2
+  - Ensures the package is self contained
+  - Exports and imports required packages   
+]
+<gray2>4) 'LICENSE' file</gray2>   
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) 'man' folder</gray2>   
+<br>
+<br>
+<gray2>7) 'vignettes' folder</gray2>  
+<br>
+<br>
+<gray2>8) 'tests' folder</gray2> 
+<br>
+<br>
+<gray2>9) 'data' folder</gray2>  
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<br>
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2>  
+<br> 
+<br>
+<black2>4) 'LICENSE' file</black2>  
+.sub_bullet[
+- The license associated with the package
+  - This holds the copyright information for the package   
+]     
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) 'man' folder</gray2>     
+<br>
+<br>
+<gray2>7) 'vignettes' folder</gray2>  
+<br> 
+<br>
+<gray2>8) 'tests' folder</gray2>  
+<br> 
+<br>
+<gray2>9) 'data' folder</gray2> 
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2> 
+<br>  
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2>   
+<br>
+<br>
+<gray2>4) 'LICENSE' file</gray2>  
+<br>
+<br>
+<black2>5) 'R' folder</black2>   
+.sub_bullet[
+- Where all of the code lives for the package
+- Automatically created when a package is created   
+] 
+<gray2>6) 'man' folder</gray2>     
+<br>
+<br>
+<gray2>7) 'vignettes' folder</gray2>   
+<br>
+<br>
+<gray2>8) 'tests' folder</gray2>   
+<br>
+<br>
+<gray2>9) 'data' folder</gray2> 
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<br>
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2>   
+<br>
+<br>
+<gray2>4) 'LICENSE' file</gray2>  
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<black2>6) The 'man' folder</black2>     
+.sub_bullet[
+- Documentation that will fill the help page for your package
+- Created automatically using Roxygen2 based on the params included in each script   
+]   
+<gray2>7) 'vignettes' folder</gray2>   
+<br>
+<br>
+<gray2>8) 'tests' folder</gray2>   
+<br>
+<br>
+<gray2>9) 'data' folder</gray2> 
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<br>
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2>   
+<br>
+<br>
+<gray2>4) 'LICENSE' file</gray2>  
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) The 'man' folder</gray2>     
+<br>
+<br>
+<black2>7) The 'vignettes' folder<black2>  
+.sub_bullet[
+- When users have installed the package through CRAN or you need to create a build-specific tutorial
+- Provide detailed tutorials
+- Provide examples/reasons for common errors or warnings in the package
+- Can provide information on new features
+- Multiple vignettes can be provided per package   
+]   
+<gray2>8) 'tests' folder</gray2>   
+<br>
+<br>
+<gray2>9) 'data' folder</gray2> 
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<br>
+<br>
+<gray2>2) 'README' file</gray2>   
+<br>
+<br>
+<gray2>3) 'NAMESPACE' file</gray2>   
+<br>
+<br>
+<gray2>4) 'LICENSE' file</gray2>  
+<br>
+<br>
+<gray2>5) 'R' folder</gray2>   
+<br>
+<br>
+<gray2>6) The 'man' folder</gray2>    
+<br> 
+<br>
+<gray2>7) The 'vignettes' folder</gray2>  
+<br>
+<br>
+<black2>8) 'tests' folder</black2>   
+.sub_bullet[
+- Setup tests to ensure your package is working as intended
+- Test if the proper errors, warnings, or messages appear when certain conditions are met   
+]   
+<gray2>9) 'data' folder</gray2> 
+
+---
+
+### Package Development: Elements
+
+<gray2>1) 'DESCRIPTION' file</gray2>   
+<gray2>2) 'README' file</gray2>   
+<gray2>3) 'NAMESPACE' file</gray2>   
+<gray2>4) 'LICENSE' file</gray2>  
+<gray2>5) 'R' folder</gray2>   
+<gray2>6) The 'man' folder</gray2>    
+<gray2>7) The 'vignettes' folder</gray2>  
+<gray2>8) 'tests' folder</gray2>   
+<black2>9) 'data' folder</black2>
+- A place to include datasets that you want to be accessible through your package   
+   
+
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<black>Development</black>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+---
+
+### Package Development: Development
+#### The 'DESCRIPTION' file
+
+- This file is automatically generated when you create a package
+
+- You will need to fill it out manually
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/description.png", dpi = 175)
+
+```
+
+---
+
+### Package Development: Development
+
+#### The 'README' file
+
+.img-right[
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/readme.png", dpi = 175)
+
+```
+]
+
+.unwrap[
+
+- Create a README.Rmd and manually fill it out
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_readme_rmd()
+
+```
+
+- Update the README.md file by knitting this file or running
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::build_readme()
+
+```
+]
+
+
+---
+
+### Package Development: Development
+#### The 'NAMESPACE' file
+
+- This is an automatically updated file
+
+- Update it by doing
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::document()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/namespace.png", dpi = 175)
+
+```
+
+---
+
+### Package Development: Development
+#### The 'LICENSE' file
+
+- Copyright your work by calling one of these
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_mit_license()
+
+usethis::use_gpl3_license()
+
+usethis::use_proprietary_license()
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/license.png", dpi = 175)
+
+```
+
+
+---
+
+### Package Development: Development
+#### R Scripts
+
+- Create your R scripts as you normally would
+
+- These will be singular functions
+
+- Set up your @params at the top of the script to fill out your function manual
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/params.png", dpi = 175)
+
+```
+
+---
+
+### Package Development: Development
+#### Manuals
+
+- Found in the 'man' folder
+
+- These are generated automatically based on the @params found at the top of your R scripts
+
+- These form your help tab for your functions in the UI
+
+- Update your manuals by doing
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::document()
+
+```
+
+---
+
+### Package Development: Development
+
+#### Vignettes
+
+.img-right[
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/vignette.png", dpi = 175)
+
+```
+]
+
+.unwrap[
+- Create a vignette by calling 
+
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::build_vignettes()
+
+```
+  
+- Fill it out manually now that it has been created
+]
+
+---
+
+### Package Development: Development
+
+#### Tests
+.img-right[
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/test.png", dpi = 175)
+
+```
+]
+
+.unwrap[
+- First you need to setup a test infrastructure
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_testthat()
+
+```
+- Next create a test file
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_test()
+
+```
+- Create your tests using the package 'testthat'
+  - Test for warnings, errors, and warnings
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test_that()
+
+```
+
+- Run the tests using
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test()
+
+```
+]
+
+---
+
+### Package Development: Development
+#### Data
+
+- Create a data folder
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_data()
+
+```
+
+- To make datasets accessible through your package simply save your data to the data folder
+
+- Make sure these files are saved as '.rda' files
+
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<black>Final Checks</black>  
+<br>
+<br>
+<gray>Maintaining</gray>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+---
+
+### Package Development: Final Checks
+
+<black2>Test your package</black2>
+.sub_bullet[
+- Use this code to run your preset tests
+]
+``` {r, echo=TRUE, eval=FALSE}
+
+testthat::test()
+
+```
+
+<gray2>Check your package</gray2> 
+<br>
+<br>
+<gray2>Build your package</gray2> 
+
+---
+
+### Package Development: Final Checks
+
+<div class="gray2">Test your package</div>
+
+Check your package
+- Run checks on the package
+  - This will return any potential problems, missing elements, or errors with the entire package
+
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::check()
+
+```
+
+<div class="gray2">Build your package</div> 
+
+---
+
+### Package Development: Final Checks
+
+<gray2>Test your package</gray2>
+<gray2>Check your package</gray2> 
+<black2>Build your package</black2> 
+.sub_bullet[
+- Once your tests and checks are complete you can finally build your package
+]
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::build()
+
+```
+
+ 
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<br>
+<br>
+<gray>Creating a Package</gray>
+<br>
+<br>
+<gray>Structure</gray>
+<br>
+<br>
+<gray>Elements</gray>  
+<br>
+<br>
+<gray>Development</gray>  
+<br>
+<br>
+<gray>Final Checks</gray>  
+<br>
+<br>
+<black>Maintaining</black>  
+<br>
+<br>
+<gray>Resources</gray>  
+
+---
+
+### Package Development: Maintaining
+
+<div class="black2">Install your package locally</div>
+
+- This is an important step, you will want to make sure it installs and runs normally now that it has been transformed into a zip file
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages("path/package_name.tar.gz")
+
+```
+
+<gray2>Uploading your package to GitHub</gray2> 
+<br>
+<br>
+<gray2>Installing from GitHub</gray2> 
+<br>
+<br>
+<gray2>Bug Fixing and Updating</gray2> 
+
+ 
+---
+
+### Package Development: Maintaining
+
+<div class="gray2">Install your package locally</div>
+
+Uploading your package to GitHub
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: need to finish this
+
+```
+- Allows you to track changes in your code
+- Others can easily review, provide input and collaborate with your package and code
+- People can easily install your package directly from GitHub using 'install_github()'
+
+``` {r, echo=TRUE, eval=FALSE}
+
+install.packages('devtools')
+library('devtools')
+
+```
+
+<gray2>Installing from GitHub</gray2> 
+<br>
+<br>
+<gray2>Bug Fixing and Updating</gray2> 
+ 
+---
+
+### Package Development: Maintaining
+
+<div class="gray2">Install your package locally</div>
+<br>
+<div class="gray2">Uploading your package to GitHub</div>
+
+Installing from GitHub
+
+- The code to install your package from GitHub is as follows
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::install_github("username/package_repo")
+
+```
+
+<gray2>Bug Fixing and Updating</gray2> 
+ 
+---
+
+### Package Development: Maintaining
+
+<div class="gray2">Install your package locally</div>
+<br>
+<div class="gray2">Uploading your package to GitHub</div>
+<br>
+<div class="gray2">Installing from GitHub</div>
+
+Bug Fixing and Updating
+
+- Managing bugs
+  - Load your 'devtools' package
+  - Now run this to load all of the functions in your package
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::load_all()
+
+```
+   
+- Updating your package
+  - Update the package version found in the 'DESCRIPTION' file
+  - Run your tests, checks, and build your package again
+  - Commit your changes and push to git
+
+
+*Remember all of the same git features exist here, if you are doing testing feel free to leverage branches in git and merge together later with main once you are finished.* 
+ 
+---
+
+# Package Development
+
+<gray>Libraries</gray>
+<gray>Creating a Package</gray>
+<gray>Structure</gray>
+<gray>Elements</gray>  
+<gray>Development</gray>  
+<gray>Final Checks</gray>  
+<gray>Maintaining</gray>  
+<black>Resources</black> 
+
+---
+
+### Package Development: Resources
+
+[How to Guide](https://r-pkgs.org/)
+
+[Another How to Guide](https://bookdown.org/rdpeng/RProgDA/building-r-packages.html)
+
+[Package Development Cheat Sheet](https://rstudio.github.io/cheatsheets/html/package-development.html)
+
+[Publishing Packages to GitHub](https://kbroman.org/pkg_primer/pages/github.html)
+

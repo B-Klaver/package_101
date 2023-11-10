@@ -32,4 +32,72 @@ code.r{
   text-shadow: none;
 }
 
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
+.img-right {
+  float: right;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.unwrap {
+  float: left;
+}
+
+gray {
+  color: #c9c9c9;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+gray2 {
+  color: #c9c9c9;
+  font-size: 20px;
+}
+
+.gray2 {
+  color: #c9c9c9;
+  font-size: 20px;
+}
+
+
+black {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+black2 {
+  color: black;
+  font-size: 20px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+
+.sub_bullet > ul {
+    padding-left: 25px;
+}
+
+.sub_bullet > ul > li > ul {
+    padding-left: 30px;
+}
+
+.sub_bullet > ul > li {
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+.sub_bullet > ul > li > ul > li {
+    list-style-type: circle;
+    list-style-position: outside;
+}
