@@ -39,8 +39,26 @@ sapply(c('devtools'),
 - They provide a clean uniform experience for others
 - They are well documented, provide examples, and are tested to be robust
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: increase space between bullet points
+# TODO: centre this image
+
+```
+
+``` {r echo=FALSE}
+
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/r_pic.png", dpi = 175)
+
+```
+
 ---
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this text
+
+```
 # Getting Started: Libraries
 
 ---
@@ -60,7 +78,8 @@ library('rtools')
 
 #### Installing 'devtools'
 
-- devtools contains many useful and necessary functions to properly and easily setup the framework for a package
+- 'devtools' contains many useful and necessary functions to properly and easily setup the framework for a package
+  - 'devtools' includes other necessary packages such as: 'usethis', 'testthat', and 'roxygen2'
 
 ``` {r, echo=TRUE, eval=FALSE}
 
@@ -71,54 +90,90 @@ library('devtools')
 
 ---
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this text
+
+```
 # Getting Started: Create a package
 
 ---
 
 ### Getting Started: Create a package
-Step 1: create a new project
+1) Create a new project
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_project.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_project.png", dpi = 200)
 
 ```
+
+2) Start a new directory
+
+3) Select 'R Package'
+
+4) Name your package and setup a git repository to track changes
+
 
 ---
 
 ### Getting Started: Create a package
-Step 2: start a new directory
+1) Create a new project
+
+2) Start a new directory
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_directory.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_directory.png", dpi = 200)
 
 ```
+
+3) Select 'R Package'
+
+4) Name your package and setup a git repository to track changes
+
 
 ---
 
 ### Getting Started: Create a package
-Step 3: select 'R Package'
+1) Create a new project
+
+2) Start a new directory
+
+3) Select 'R Package'
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/create_package.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/create_package.png", dpi = 200)
 
 ```
+
+4) Name your package and setup a git repository to track changes
 
 ---
 
 ### Getting Started: Create a package
-Step 4: name your package and setup a git repository to track changes
+1) Create a new project
+
+2) Start a new directory
+
+3) Select 'R Package'
+
+4) Name your package and setup a git repository to track changes
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/package_name.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/package_name.png", dpi = 200)
 
 ```
 
 ---
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this text
+
+```
 # Getting Started: Package Structure
 
 ---
@@ -130,11 +185,20 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
   - man
   - vignettes
   - tests
+   
 - Key files:
   - NAMESPACE
   - README
   - DESCRIPTION
   - LICENSE
+
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: move image to right hand side
+# TODO: add space between the points
+
+```
 
 ``` {r echo=FALSE}
 
@@ -144,12 +208,18 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ---
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this text
+
+```
 # Getting Started: Package elements
 
 ---
 
 ### Getting Started: Package elements
-#### The 'DESCRIPTION' file
+
+*1) 'DESCRIPTION' file*
 
 - Describes important elements in a package
   - Package name
@@ -159,12 +229,22 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
   - Description of the package
   - License information
   - Package imports/suggestions
+  
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*   
+*5) 'R' folder*   
+*6) 'man' folder*     
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder*   
 
 ---
 
 ### Getting Started: Package elements
-#### The 'README' file
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
 - Provides GitHub users an overview of the package
   - How to install
   - Description/purpose
@@ -172,78 +252,162 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 - There are two types of README files
   - README.Rmd, which allows R chunks (it is an Rmd after all!)
   - README.md, which is just a basic README
-- It is recommended to build your README as an Rmd, which will be rendered as an md file that appears nicely in GitHub
+- It is recommended to build your README as an Rmd, which will be rendered as an md file that appears nicely in GitHub   
+   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*   
+*5) 'R' folder*   
+*6) 'man' folder*     
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder*   
+
 
 ---
 
 ### Getting Started: Package elements
-#### 'NAMESPACE'
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
 - Updated/created automatically using roxygen2
   - Ensures the package is self contained
-  - Exports and imports required packages
+  - Exports and imports required packages   
+     
+*4) 'LICENSE' file*   
+*5) 'R' folder*   
+*6) 'man' folder*     
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder*  
 
 ---
 
 ### Getting Started: Package elements
-#### 'LICENSE'
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
 - The license associated with the package
-  - This holds the copyright information for the package
+  - This holds the copyright information for the package   
+     
+*5) 'R' folder*   
+*6) 'man' folder*     
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder* 
 
 ---
 
 ### Getting Started: Package elements
-#### 'R' folder
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
+*5) 'R' folder*   
 - Where all of the code lives for the package
-- Automatically created when a package is created
+- Automatically created when a package is created   
+   
+*6) 'man' folder*     
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder* 
 
 ---
 
 ### Getting Started: Package elements
-#### 'man' folder
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
+*5) 'R' folder*   
+*6) The 'man' folder*     
 - Documentation that will fill the help page for your package
-- Created automatically using Roxygen2 based on the params included in each script
+- Created automatically using Roxygen2 based on the params included in each script   
+   
+*7) 'vignettes' folder*   
+*8) 'tests' folder*   
+*9) 'data' folder* 
 
 ---
 
 ### Getting Started: Package elements
-#### 'vignettes' folder
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
+*5) 'R' folder*   
+*6) The 'man' folder*     
+*7) The 'vignettes' folder*  
 - When users have installed the package through CRAN or need to create a build-specific tutorial
 - Provide detailed tutorials
 - Provide examples/reasons for common errors or warnings in the package
 - Can provide information on new features
-- Multiple vignettes can be provided per package
+- Multiple vignettes can be provided per package   
+   
+*8) 'tests' folder*   
+*9) 'data' folder* 
 
 ---
 
 ### Getting Started: Package elements
-#### 'tests' folder
 
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
+*5) 'R' folder*   
+*6) The 'man' folder*     
+*7) The 'vignettes' folder*  
+*8) 'tests' folder*   
 - Setup tests to ensure your package is working as intended
-- Test if the proper errors, warnings, or messages appear when certain conditions are met
+- Test if the proper errors, warnings, or messages appear when certain conditions are met   
+   
+*9) 'data' folder* 
 
 ---
 
 ### Getting Started: Package elements
-#### 'data' folder
 
-- A place to include datasets that you want to be accessible through your package
+*1) 'DESCRIPTION' file*   
+*2) 'README' file*   
+*3) 'NAMESPACE' file*   
+*4) 'LICENSE' file*  
+*5) 'R' folder*   
+*6) The 'man' folder*     
+*7) The 'vignettes' folder*  
+*8) 'tests' folder*   
+*9) 'data' folder*
+- A place to include datasets that you want to be accessible through your package   
+   
 
 ---
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this text
+
+```
 # Package Development
 
 ---
 
 ### Package Development:
-#### 'DESCRIPTION'
+#### The 'DESCRIPTION' file
 
 - This file is automatically generated when you create a package
 - You will need to fill it out manually, though certain elements can be automatically filled
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: centre this image
+# TODO: Add the code to automatically fill it out
+
+```
 
 ``` {r echo=FALSE}
 
@@ -254,7 +418,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 ---
 
 ### Package Development:
-#### 'README'
+#### The 'README' file
 
 - Create a README.Rmd and manually fill it out
 ``` {r, echo=TRUE, eval=FALSE}
@@ -269,6 +433,12 @@ devtools::build_readme()
 
 ```
 
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: move image to rhs
+
+```
+
 ``` {r echo=FALSE}
 
 knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/readme.png", dpi = 175)
@@ -278,13 +448,13 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 ---
 
 ### Package Development:
-#### 'NAMESPACE'
+#### The 'NAMESPACE' file
 
 - This is an automatically updated file
 - Update it by doing
 ``` {r, echo=TRUE, eval=FALSE}
 
-document()
+devtools::document()
 
 ```
 
@@ -297,7 +467,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 ---
 
 ### Package Development:
-#### 'LICENSE'
+#### The 'LICENSE' file
 
 - Copyright your work by calling one of these
 ``` {r, echo=TRUE, eval=FALSE}
@@ -337,10 +507,11 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 - Found in the 'man' folder
 - These are generated automatically based on the @params found at the top of your R scripts
+- These form your help tab for your functions in the UI
 - Update your manuals by doing
 ``` {r, echo=TRUE, eval=FALSE}
 
-document()
+devtools::document()
 
 ```
 
@@ -349,7 +520,7 @@ document()
 ### Package Development:
 #### Vignettes
 
-- Create a vignette by calling (note this also creates the vignette folder)
+- Create a vignette by calling (note: this also creates the vignette folder)
 ``` {r, echo=TRUE, eval=FALSE}
 
 usethis::use_vignette('vignette_name')
@@ -357,6 +528,12 @@ usethis::use_vignette('vignette_name')
 ```
 - Try calling your vignettes by the names of the functions they relate to
 - Fill it out manually now that it has been created
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: move image to RHS
+
+```
 
 ``` {r echo=FALSE}
 
@@ -383,7 +560,7 @@ usethis::use_test()
 
 ```
 - Create your tests using the package 'testthat'
-  - test for warnings, errors, and warnings
+  - Test for warnings, errors, and warnings
 ``` {r, echo=TRUE, eval=FALSE}
 
 testthat::test_that()
@@ -432,18 +609,18 @@ testthat::test()
   - This will return any potential problems, missing elements, or errors with the entire package
 ``` {r, echo=TRUE, eval=FALSE}
 
-check()
+devtools::check()
 
 ```
 #### Build your package
 - Once your tests and checks are complete you can finally build your package
 ``` {r, echo=TRUE, eval=FALSE}
 
-build()
+devtools::build()
 
 ```
 
---- 
+---
 
 ### Install your package locally
 
@@ -457,7 +634,11 @@ install.packages("path/package_name.tar.gz")
 ---
 
 ### Upload your package to GitHub
+```{r , include=FALSE, echo=FALSE}
 
+# TODO: need to finish this
+
+```
 - Allows you to track changes in your code
 - Others can easily review, provide input and collaborate with your package and code
 - People can easily install your package directly from GitHub using 'install_github()'
@@ -473,16 +654,41 @@ library('devtools')
 
 ### Updating and working with your package
 
-- Now that your package is created and you've realized you have bugs the first step is to load your project back up
-- Load your 'devtools' package
-- Now run this to load all of the functions in your package
+- Bug fixing
+  - Load your 'devtools' package
+  - Now run this to load all of the functions in your package
 ``` {r, echo=TRUE, eval=FALSE}
 
-load_all()
+devtools::load_all()
 
 ```
-- Okay so you've made some changes and everything appears to be fixed
-  - Update the package version found in the DESCRIPTION file
+   
+- Updating your package
+  - Update the package version found in the 'DESCRIPTION' file
+  - Run your tests, checks, and build your package again
   - Commit your changes and push to git
-- Remember all of the same git features exist here, if you are doing testing feel free to leverage branches in git and merge together later with main once you are finished
+
+
+*Remember all of the same git features exist here, if you are doing testing feel free to leverage branches in git and merge together later with main once you are finished*
   
+---
+
+### Installing your package directly from GitHub
+
+The code to install your package from GitHub is as follows
+``` {r, echo=TRUE, eval=FALSE}
+
+devtools::install_github("username/package_repo")
+
+```
+
+
+---
+
+### Resources
+
+```{r , include=FALSE, echo=FALSE}
+
+# TODO: include the the bookdown, cheat sheet, and path to this presentation
+
+```
