@@ -1,5 +1,5 @@
 ---
-title: "Package Development"
+title: "Package Development 101"
 date: "November 9, 2023"
 output: 
   xaringan::moon_reader:
@@ -45,7 +45,7 @@ sapply(c('devtools'),
 .center2[
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/r_pic.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/r_pic.png", dpi = 175)
 
 ```
 ]
@@ -151,7 +151,7 @@ library('devtools')
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_project.png", dpi = 200)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/new_project.png", dpi = 200)
 
 ```
 
@@ -174,7 +174,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/new_directory.png", dpi = 200)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/new_directory.png", dpi = 200)
 
 ```
 
@@ -197,7 +197,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/create_package.png", dpi = 200)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/create_package.png", dpi = 200)
 
 ```
 
@@ -219,7 +219,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/package_name.png", dpi = 200)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/package_name.png", dpi = 200)
 
 ```
 
@@ -258,7 +258,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 .img-right[
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/folders.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/folders.png", dpi = 175)
 
 ```
 ]
@@ -634,7 +634,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/description.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/description.png", dpi = 175)
 
 ```
 
@@ -647,7 +647,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 .img-right[
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/readme.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/readme.png", dpi = 175)
 
 ```
 ]
@@ -686,7 +686,7 @@ devtools::document()
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/namespace.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/namespace.png", dpi = 175)
 
 ```
 
@@ -708,7 +708,7 @@ usethis::use_proprietary_license()
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/license.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/license.png", dpi = 175)
 
 ```
 
@@ -726,7 +726,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/docu
 
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/params.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/params.png", dpi = 175)
 
 ```
 
@@ -757,7 +757,7 @@ devtools::document()
 .img-right[
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/vignette.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/vignette.png", dpi = 175)
 
 ```
 ]
@@ -782,7 +782,7 @@ devtools::build_vignettes()
 .img-right[
 ``` {r echo=FALSE}
 
-knitr::include_graphics("C:/Users/Braeden/Documents/Projects/ECweather_pres/documents/test.png", dpi = 175)
+knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/test.png", dpi = 175)
 
 ```
 ]
