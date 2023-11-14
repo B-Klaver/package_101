@@ -14,6 +14,7 @@ output:
       ratio: '16:9'
       navigation:
         scroll: false
+linkcolor: blue
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
@@ -36,11 +37,9 @@ sapply(c('devtools'),
 
 - When you have many interrelated functions it can be useful to combine them into one location (ie. a package)   
 
-- They make it much easier to distribute your code to others   
+- It's easier to share your code and collaborate with others
 
-- They provide a clean uniform experience for others   
-
-- They are well documented, provide examples, and are tested to be robust   
+- They provide documentation, examples, and are tested to be robust   
 
 .center2[
 ``` {r echo=FALSE}
@@ -52,7 +51,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-# Package Development
+# Package Overview
 
 <black>Libraries</black>
 <gray>Creating a Package</gray>
@@ -78,13 +77,13 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Libraries
+### Package Overview: Libraries
 
-Installing 'Rtools'
+**'RTools'**
 
-- 'Rtools' is required to develop packages in R
+- 'RTools' is required to develop packages in R
 
-- Make sure you install the correct Rtools for your R version (<https://cran.r-project.org/bin/windows/Rtools/>)
+- Make sure you install the correct RTools for your R version (**[RTools versions](https://cran.r-project.org/bin/windows/Rtools/)**)
 
 ``` {r, echo=TRUE, eval=FALSE}
 
@@ -93,17 +92,17 @@ library('rtools')
 
 ```
 
-<div class="gray2">Installing 'devtools'</div>
+<div class="gray2">'devtools'</div>
 
 
 
 ---
 
-### Package Development: Libraries
+### Package Overview: Libraries
 
-<div class="gray2">Installing 'Rtools'</div>
+<div class="gray2">'Rtools'</div>
 
-Installing 'devtools'
+**'devtools'**
 
 - 'devtools' contains many useful and necessary functions to properly and easily setup the framework for a package
 
@@ -118,7 +117,7 @@ library('devtools')
 
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -146,7 +145,7 @@ library('devtools')
 
 ---
 
-### Package Development: Creating a Package
+### Package Overview: Creating a Package
 1) Create a new project
 
 ``` {r echo=FALSE}
@@ -166,7 +165,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Creating a Package
+### Package Overview: Creating a Package
 
 <gray2>1) Create a new project</gray2>
 
@@ -186,7 +185,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Creating a Package
+### Package Overview: Creating a Package
 
 <gray2>1) Create a new project</gray2>
 <br>
@@ -205,7 +204,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Creating a Package
+### Package Overview: Creating a Package
 
 <gray2>1) Create a new project</gray2>
 <br>
@@ -225,7 +224,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -253,7 +252,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Structure
+### Package Overview: Structure
 
 .img-right[
 ``` {r echo=FALSE}
@@ -279,7 +278,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -307,13 +306,8 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
-```{r , include=FALSE, echo=FALSE}
-
-# TODO: gray out the other lines
-
-```
 <black2>1) 'DESCRIPTION' file</black2>
 
 - Describes important elements in a package
@@ -348,7 +342,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <br>
@@ -359,7 +353,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
   - Description, purpose, and examples
 - There are two types of README files
   - README.Rmd, which allows R chunks (it is an Rmd after all!)
-  - README.md, which is just a basic README
+  - README.md, which is just a basic README unless rendered from an Rmd README
 - It is recommended to build your README as an Rmd, which will be rendered as an md file that appears nicely in GitHub   
 ]
 </black2>   
@@ -386,7 +380,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>  
 <br> 
@@ -419,7 +413,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <br>
@@ -451,7 +445,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2> 
 <br>  
@@ -483,7 +477,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <br>
@@ -502,7 +496,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 <br>
 <black2>6) The 'man' folder</black2>     
 .sub_bullet[
-- Documentation that will fill the help page for your package
+- Documentation that will fill the help page for your packages functions and objects
 - Created automatically using Roxygen2 based on the params included in each script   
 ]   
 <gray2>7) 'vignettes' folder</gray2>   
@@ -515,7 +509,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <br>
@@ -537,7 +531,6 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 <br>
 <black2>7) The 'vignettes' folder<black2>  
 .sub_bullet[
-- When users have installed the package through CRAN or you need to create a build-specific tutorial
 - Provide detailed tutorials
 - Provide examples/reasons for common errors or warnings in the package
 - Can provide information on new features
@@ -550,7 +543,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <br>
@@ -582,7 +575,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Elements
+### Package Overview: Elements
 
 <gray2>1) 'DESCRIPTION' file</gray2>   
 <gray2>2) 'README' file</gray2>   
@@ -598,7 +591,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -625,22 +618,36 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
+
 #### The 'DESCRIPTION' file
 
-- This file is automatically generated when you create a package
-
-- You will need to fill it out manually
-
+.img-right[
 ``` {r echo=FALSE}
 
 knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documents/description.png", dpi = 175)
 
 ```
+]
+
+.unwrap[
+
+- This file is automatically generated
+
+- You will need to mostly fill it out manually
+
+- Sections can be filled in automatically
+  - For example setting the packages used in the package
+``` {r, echo=TRUE, eval=FALSE}
+
+usethis::use_package('dplyr')
+
+```
+]
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 
 #### The 'README' file
 
@@ -672,7 +679,7 @@ devtools::build_readme()
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 #### The 'NAMESPACE' file
 
 - This is an automatically updated file
@@ -692,10 +699,12 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 #### The 'LICENSE' file
 
-- Copyright your work by calling one of these
+- Copyright your work by calling one of these   
+
+*Note: there are other licenses you can call beyond these*
 ``` {r, echo=TRUE, eval=FALSE}
 
 usethis::use_mit_license()
@@ -715,7 +724,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 #### R Scripts
 
 - Create your R scripts as you normally would
@@ -732,14 +741,14 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 #### Manuals
 
 - Found in the 'man' folder
 
 - These are generated automatically based on the @params found at the top of your R scripts
 
-- These form your help tab for your functions in the UI
+- These form your help tab for your functions in the UI for your functions and objects
 
 - Update your manuals by doing
 ``` {r, echo=TRUE, eval=FALSE}
@@ -750,7 +759,7 @@ devtools::document()
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 
 #### Vignettes
 
@@ -767,7 +776,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ``` {r, echo=TRUE, eval=FALSE}
 
-devtools::build_vignettes()
+devtools::build_vignettes('vignette_name')
 
 ```
   
@@ -776,7 +785,7 @@ devtools::build_vignettes()
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 
 #### Tests
 .img-right[
@@ -797,14 +806,14 @@ usethis::use_testthat()
 - Next create a test file
 ``` {r, echo=TRUE, eval=FALSE}
 
-usethis::use_test()
+usethis::use_test('test_name')
 
 ```
 - Create your tests using the package 'testthat'
   - Test for warnings, errors, and warnings
 ``` {r, echo=TRUE, eval=FALSE}
 
-testthat::test_that()
+testthat::test_that(testing_code)
 
 ```
 
@@ -818,23 +827,24 @@ testthat::test()
 
 ---
 
-### Package Development: Development
+### Package Overview: Development
 #### Data
 
-- Create a data folder
+- To make datasets accessible through your package simply save your data by doing   
+
+*Note: this also makes a 'data' folder for your package*
+
 ``` {r, echo=TRUE, eval=FALSE}
 
-usethis::use_data()
+usethis::use_data(df)
 
 ```
 
-- To make datasets accessible through your package simply save your data to the data folder
-
-- Make sure these files are saved as '.rda' files
+- This function will save the data as an '.rda' file
 
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -861,7 +871,7 @@ usethis::use_data()
 
 ---
 
-### Package Development: Final Checks
+### Package Overview: Final Checks
 
 <black2>Test your package</black2>
 .sub_bullet[
@@ -880,13 +890,13 @@ testthat::test()
 
 ---
 
-### Package Development: Final Checks
+### Package Overview: Final Checks
 
 <div class="gray2">Test your package</div>
 
 Check your package
 - Run checks on the package
-  - This will return any potential problems, missing elements, or errors with the entire package
+  - This will return any potential problems, missing elements, or errors within the package
 
 ``` {r, echo=TRUE, eval=FALSE}
 
@@ -898,7 +908,7 @@ devtools::check()
 
 ---
 
-### Package Development: Final Checks
+### Package Overview: Final Checks
 
 <gray2>Test your package</gray2>
 <gray2>Check your package</gray2> 
@@ -915,7 +925,7 @@ devtools::build()
  
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <br>
@@ -942,7 +952,7 @@ devtools::build()
 
 ---
 
-### Package Development: Maintaining
+### Package Overview: Maintaining
 
 <div class="black2">Install your package locally</div>
 
@@ -964,27 +974,27 @@ install.packages("path/package_name.tar.gz")
  
 ---
 
-### Package Development: Maintaining
+### Package Overview: Maintaining
 
 <div class="gray2">Install your package locally</div>
 
 Uploading your package to GitHub
 
-```{r , include=FALSE, echo=FALSE}
-
-# TODO: need to finish this
-
-```
-- Allows you to track changes in your code
-- Others can easily review, provide input and collaborate with your package and code
-- People can easily install your package directly from GitHub using 'install_github()'
-
+- You will need a GitHub account then follow these steps:    
+1) **[Create a git repo](https://kbroman.org/github_tutorial/pages/init.html)**   
+2) Commit all of your changes locally   
+3) Connect and push to the repository by doing   
 ``` {r, echo=TRUE, eval=FALSE}
 
-install.packages('devtools')
-library('devtools')
+git remote add origin https://github.com/username/reponame
+
+push -u origin master
 
 ```
+- Benefits
+  - Allows you to track changes in your code
+  - Others can easily review, provide input and collaborate with your package and code
+  - People can easily install your package directly from GitHub
 
 <gray2>Installing from GitHub</gray2> 
 <br>
@@ -993,7 +1003,7 @@ library('devtools')
  
 ---
 
-### Package Development: Maintaining
+### Package Overview: Maintaining
 
 <div class="gray2">Install your package locally</div>
 <br>
@@ -1012,7 +1022,7 @@ devtools::install_github("username/package_repo")
  
 ---
 
-### Package Development: Maintaining
+### Package Overview: Maintaining
 
 <div class="gray2">Install your package locally</div>
 <br>
@@ -1022,7 +1032,7 @@ devtools::install_github("username/package_repo")
 
 Bug Fixing and Updating
 
-- Managing bugs
+- Re-load your package project
   - Load your 'devtools' package
   - Now run this to load all of the functions in your package
 ``` {r, echo=TRUE, eval=FALSE}
@@ -1030,8 +1040,9 @@ Bug Fixing and Updating
 devtools::load_all()
 
 ```
-   
-- Updating your package
+
+- Updating/fixing your package
+  - Apply your updates/fixes
   - Update the package version found in the 'DESCRIPTION' file
   - Run your tests, checks, and build your package again
   - Commit your changes and push to git
@@ -1041,7 +1052,7 @@ devtools::load_all()
  
 ---
 
-# Package Development
+# Package Overview
 
 <gray>Libraries</gray>
 <gray>Creating a Package</gray>
@@ -1054,13 +1065,13 @@ devtools::load_all()
 
 ---
 
-### Package Development: Resources
+### Package Overview: Resources
 
-[How to Guide](https://r-pkgs.org/)
+**[How to Guide](https://r-pkgs.org/)**
 
-[Another How to Guide](https://bookdown.org/rdpeng/RProgDA/building-r-packages.html)
+**[Another How to Guide](https://bookdown.org/rdpeng/RProgDA/building-r-packages.html)**
 
-[Package Development Cheat Sheet](https://rstudio.github.io/cheatsheets/html/package-development.html)
+**[Package Development Cheat Sheet](https://rstudio.github.io/cheatsheets/html/package-development.html)**
 
-[Publishing Packages to GitHub](https://kbroman.org/pkg_primer/pages/github.html)
+**[Publishing Packages to GitHub](https://kbroman.org/pkg_primer/pages/github.html)**
 
