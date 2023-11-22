@@ -817,7 +817,7 @@ knitr::include_graphics("C:/Users/Braeden/Documents/Projects/package_dev/documen
 
 ``` {r, echo=TRUE, eval=FALSE}
 
-devtools::build_vignettes('vignette_name')
+usethis::use_vignette('vignette_name')
 
 ```
   
