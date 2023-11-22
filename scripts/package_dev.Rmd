@@ -869,6 +869,7 @@ testthat::test()
 ---
 
 ### Package Overview: Development
+
 #### Data
 
 - To make datasets accessible through your package simply save your data by doing   
@@ -882,6 +883,9 @@ usethis::use_data(df)
 ```
 
 - This function will save the data as an '.rda' file
+
+- Data files should have an accompanying R script with set parameters and details of the dataframe
+  - Code for this script should simply just be 'NULL' below the parameters
 
 ---
 
